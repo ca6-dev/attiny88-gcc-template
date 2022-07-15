@@ -1,0 +1,6 @@
+.vscode/
+.history/
+*.vsix
+.history
+.ionide
+*.code-workspace
