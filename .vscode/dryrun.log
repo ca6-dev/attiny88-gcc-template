@@ -1,0 +1,13 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/david/workspace/git/attiny88-gcc-template'
+mkdir -p obj/src/
+avr-gcc -Wall -Isrc -MMD -MP -O3 -std=gnu99 -Wall -mmcu=attiny88 -g0 -DTARGET_AVR -c src/main.c -o obj/src/main.c.o 
+avr-gcc -Wall obj/src/main.c.o -O3 -std=gnu99 -Wall -mmcu=attiny88 -g0 -DTARGET_AVR -o  bin/template-attiny88.elf 
+avr-objdump -S bin/template-attiny88.elf > bin/template-attiny88-list.txt
+avr-size bin/template-attiny88.elf --format=avr --mcu=attiny88 > bin/template-attiny88-map.txt
+avr-objdump -x bin/template-attiny88.elf >> bin/template-attiny88-map.txt
+avr-objcopy -O binary bin/template-attiny88.elf bin/template-attiny88.elf.bin
+avr-objcopy -j .text -j .data -O ihex bin/template-attiny88.elf bin/template-attiny88.elf.hex
+avr-size bin/template-attiny88.elf --format=avr --mcu=attiny88
+make: Leaving directory '/home/david/workspace/git/attiny88-gcc-template'
+ 
